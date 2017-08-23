@@ -1,7 +1,8 @@
 Redux-React
 =========================
 
-facebook官方todos[原始仓库地址](https://github.com/gaearon/redux-devtools)
+facebook官方todos  
+[原始仓库地址](https://github.com/gaearon/redux-devtools)
 
 #### Useage
 
