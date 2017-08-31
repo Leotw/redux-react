@@ -1,30 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import configureStore from './store/configureStore';
-import Root from './containers/Root';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import Counter from './components/Counter'
+import counter from './reducers'
 
-const store = configureStore();
+const store = createStore(counter)
+const rootEl = document.getElementById('root')
 
-render(
-  <AppContainer>
-    <Root
-      store={ store }
-    />
-  </AppContainer>,
-  document.getElementById('root')
-);
+const render = () => ReactDOM.render(
+  <Counter
+    value={store.getState()}
+    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+  />,
+  rootEl
+)
 
-if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const RootContainer = require('./containers/Root').default;
-    render(
-      <AppContainer>
-        <RootContainer
-          store={ store }
-        />
-      </AppContainer>,
-      document.getElementById('root')
-    );
-  });
-}
+render()
+store.subscribe(render)
