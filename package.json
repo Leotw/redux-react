@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "babel src --out-dir lib",
+    "build": "chmod +x ./check.sh && bash ./check.sh",
     "lint": "eslint src test examples",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
     "test:watch": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive --watch",
